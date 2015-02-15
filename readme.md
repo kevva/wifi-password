@@ -23,6 +23,20 @@ wifiPassword(function (err, password) {
 });
 ```
 
+## CLI
+
+```sh
+$ npm install --global wifi-password
+```
+
+```sh
+$ wifi-password --help
+
+Usage
+  $ wifi-password
+  johndoesecretpassword
+```
+
 ## License
 
 MIT © [Kevin Mårtensson](https://github.com/kevva)
