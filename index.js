@@ -20,7 +20,7 @@ module.exports = function (cb) {
 			cmd = [
 				'security find-generic-password -ga "' + name + '"',
 				'| sed -e "s/^.*\\"\\(.*\)\\".*$/\\1/"'
-			].join('');
+			].join(' ');
 		} else if (process.platform === 'linux') {
 			cmd = [
 				'sudo cat /etc/NetworkManager/system-connections/"' + name + '"',
