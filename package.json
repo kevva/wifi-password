@@ -1,6 +1,6 @@
 {
   "name": "wifi-password",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get current wifi password",
   "license": "MIT",
   "repository": "kevva/wifi-password",
