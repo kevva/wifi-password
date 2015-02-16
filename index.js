@@ -19,7 +19,7 @@ module.exports = function (cb) {
 		if (process.platform === 'darwin') {
 			cmd = [
 				'security find-generic-password -ga "' + name + '"',
-				'| sed -e "s/^.*\\"\\(.*\)\\".*$/\\1/"'
+				'| sed -e "s/^.*\\"\\(.*\\)\\".*$/\\1/"'
 			].join(' ');
 		} else if (process.platform === 'linux') {
 			cmd = [
