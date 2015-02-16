@@ -3,16 +3,6 @@
 var exec = require('child_process').exec;
 var wifiname = require('wifi-name');
 
-function filter(stdout, str) {
-	var regex = new RegExp(str);
-
-	stdout = stdout.split('\n').filter(function (el) {
-		return regex.test(el);
-	});
-
-	return stdout.length ? stdout[0].replace(regex, '') : null;
-}
-
 module.exports = function (cb) {
 	var cmd;
 	var ret;
@@ -40,11 +30,13 @@ module.exports = function (cb) {
 			}
 
 			if (stdout && process.platform === 'darwin') {
-				ret = filter(stdout, '^password: ');
+				ret = /^\s*password: (.+)\s*$/gm.exec(stdout);
+				ret = ret && ret.length ? ret[1] : null;
 			}
 
 			if (stdout && process.platform === 'linux') {
-				ret = filter(stdout, '^psk=');
+				ret = /^\s*psk=(.+)\s*$/gm.exec(stdout);
+				ret = ret && ret.length ? ret[1] : null;
 			}
 
 			cb(null, ret);
