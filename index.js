@@ -20,7 +20,7 @@ function getPassword(name, cb) {
 		}
 
 		if (stdout && process.platform === 'darwin') {
-			ret = /^\s*password: (.+)\s*$/gm.exec(stderr);
+			ret = /^\s*password: "(.+)"\s*$/gm.exec(stderr);
 			ret = ret && ret.length ? ret[1] : null;
 		}
 
