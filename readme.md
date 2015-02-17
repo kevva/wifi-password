@@ -22,6 +22,23 @@ wifiPassword(function (err, password) {
 ```
 
 
+## API
+
+### wifiPassword([name], cb)
+
+#### name
+
+Type: `string`
+
+Get the wifi password for a specified *known* network.
+
+#### cb(err, password)
+
+Type: `function`
+
+The callback will return the password to the network.
+
+
 ## CLI
 
 ```
