@@ -13,7 +13,7 @@ function getPassword(name, cb) {
 		args = ['find-generic-password', '-ga', name];
 	} else if (process.platform === 'linux') {
 		cmd = 'sudo';
-		args = ['cat', '/etc/NetworkManager/system-connections/', name];
+		args = ['cat', '/etc/NetworkManager/system-connections/' + name];
 	}
 
 	childProcess.execFile(cmd, args, function (err, stdout, stderr) {
