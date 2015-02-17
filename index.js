@@ -44,9 +44,9 @@ module.exports = function (ssid, cb) {
 	if (typeof ssid !== 'function') {
 		getPassword(ssid, cb);
 		return;
-	} else {
-		cb = ssid;
 	}
+
+	cb = ssid;
 
 	wifiname(function (err, name) {
 		if (err) {

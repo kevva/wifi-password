@@ -2,11 +2,13 @@
 
 > Get current wifi password
 
+
 ## Install
 
-```sh
+```
 $ npm install --save wifi-password
 ```
+
 
 ## Usage
 
@@ -14,28 +16,26 @@ $ npm install --save wifi-password
 var wifiPassword = require('wifi-password');
 
 wifiPassword(function (err, password) {
-	if (err) {
-		throw err;
-	}
-
 	console.log(password);
 	//=> johndoesecretpassword
 });
 ```
 
+
 ## CLI
 
-```sh
+```
 $ npm install --global wifi-password
 ```
 
-```sh
+```
 $ wifi-password --help
 
 Usage
   $ wifi-password
   johndoesecretpassword
 ```
+
 
 ## License
 
