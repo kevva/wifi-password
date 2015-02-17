@@ -41,7 +41,7 @@ module.exports = function (ssid, cb) {
 		throw new Error('Only OS X and Linux systems are supported');
 	}
 
-	if (typeof ssid !== 'function') {
+	if (ssid && typeof ssid !== 'function') {
 		getPassword(ssid, cb);
 		return;
 	}

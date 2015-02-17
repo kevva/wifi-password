@@ -51,6 +51,9 @@ $ wifi-password --help
 Usage
   $ wifi-password
   johndoesecretpassword
+
+  $ wifi-password foo-network
+  foosecretpassword
 ```
 
 
