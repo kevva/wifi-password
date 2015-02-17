@@ -13,14 +13,14 @@ function getPassword(name, cb) {
 		cmd = 'sudo cat /etc/NetworkManager/system-connections/"' + name + '"';
 	}
 
-	exec(cmd, function (err, stdout) {
+	exec(cmd, function (err, stdout, stderr) {
 		if (err) {
 			cb(err);
 			return;
 		}
 
 		if (stdout && process.platform === 'darwin') {
-			ret = /^\s*password: (.+)\s*$/gm.exec(stdout);
+			ret = /^\s*password: (.+)\s*$/gm.exec(stderr);
 			ret = ret && ret.length ? ret[1] : null;
 		}
 
