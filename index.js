@@ -1,19 +1,22 @@
 'use strict';
 
-var exec = require('child_process').exec;
+var childProcess = require('child_process');
 var wifiname = require('wifi-name');
 
 function getPassword(name, cb) {
 	var cmd;
+	var args;
 	var ret;
 
 	if (process.platform === 'darwin') {
-		cmd = 'security find-generic-password -ga "' + name + '"';
+		cmd = 'security';
+		args = ['find-generic-password', '-ga', name];
 	} else if (process.platform === 'linux') {
-		cmd = 'sudo cat /etc/NetworkManager/system-connections/"' + name + '"';
+		cmd = 'sudo';
+		args = ['cat', '/etc/NetworkManager/system-connections/', name];
 	}
 
-	exec(cmd, function (err, stdout, stderr) {
+	childProcess.execFile(cmd, args, function (err, stdout, stderr) {
 		if (err) {
 			cb(err);
 			return;
