@@ -52,9 +52,9 @@ module.exports = function (ssid, cb) {
 	if (ssid && typeof ssid !== 'function') {
 		getPassword(ssid, cb);
 		return;
+	} else if (ssid && !cb) {
+		cb = ssid;
 	}
-
-	cb = ssid;
 
 	wifiname(function (err, name) {
 		if (err) {
