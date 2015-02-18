@@ -40,6 +40,11 @@ function getPassword(name, cb) {
 			ret = ret && ret.length ? ret[1] : null;
 		}
 
+		if (!ret) {
+			cb(new Error('Could not get password'));
+			return;
+		}
+
 		cb(null, ret);
 	});
 }
