@@ -14,6 +14,9 @@ function getPassword(name, cb) {
 	} else if (process.platform === 'linux') {
 		cmd = 'sudo';
 		args = ['cat', '/etc/NetworkManager/system-connections/' + name];
+	} else if (process.platform === 'win32') {
+		cmd = 'netsh';
+		args = ['wlan', 'show', 'profile', 'name=' + name, 'key=clear'];
 	}
 
 	childProcess.execFile(cmd, args, function (err, stdout, stderr) {
@@ -32,13 +35,18 @@ function getPassword(name, cb) {
 			ret = ret && ret.length ? ret[1] : null;
 		}
 
+		if (stdout && process.platform === 'win32') {
+			ret = /^\s*Key Content\s*: (.+)\s*$/gm.exec(stdout);
+			ret = ret && ret.length ? ret[1] : null;
+		}
+
 		cb(null, ret);
 	});
 }
 
 module.exports = function (ssid, cb) {
-	if (process.platform !== 'darwin' && process.platform !== 'linux') {
-		throw new Error('Only OS X and Linux systems are supported');
+	if (process.platform !== 'darwin' && process.platform !== 'linux' && process.platform !== 'win32') {
+		throw new Error('Only OS X, Linux and Windows systems are supported');
 	}
 
 	if (ssid && typeof ssid !== 'function') {
