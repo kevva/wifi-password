@@ -10,7 +10,7 @@ function getPassword(name, cb) {
 
 	if (process.platform === 'darwin') {
 		cmd = 'security';
-		args = ['find-generic-password', '-ga', name];
+		args = ['find-generic-password', '-D', '"AirPort network password"', '-ga', name];
 	} else if (process.platform === 'linux') {
 		cmd = 'sudo';
 		args = ['cat', '/etc/NetworkManager/system-connections/' + name];
