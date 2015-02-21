@@ -20,6 +20,10 @@ function getPassword(name, cb) {
 	}
 
 	childProcess.execFile(cmd, args, function (err, stdout, stderr) {
+		if (err && /The specified item could not be found in the keychain/.test(err.message)) {
+			err.message = 'Your network doesn\'t have a password';
+		}
+
 		if (err) {
 			cb(err);
 			return;
