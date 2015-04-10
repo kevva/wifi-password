@@ -48,12 +48,12 @@ $ npm install --global wifi-password
 ```
 $ wifi-password --help
 
-Usage
-  $ wifi-password
-  johndoesecretpassword
+  Usage
+    $ wifi-password
+    johndoesecretpassword
 
-  $ wifi-password foo-network
-  foosecretpassword
+    $ wifi-password foo-network
+    foosecretpassword
 ```
 
 

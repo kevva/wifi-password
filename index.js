@@ -1,6 +1,6 @@
 'use strict';
 
-var childProcess = require('child_process');
+var execFile = require('child_process').execFile;
 var wifiname = require('wifi-name');
 
 function getPassword(name, cb) {
@@ -19,7 +19,7 @@ function getPassword(name, cb) {
 		args = ['wlan', 'show', 'profile', 'name=' + name, 'key=clear'];
 	}
 
-	childProcess.execFile(cmd, args, function (err, stdout, stderr) {
+	execFile(cmd, args, function (err, stdout, stderr) {
 		if (err && /The specified item could not be found in the keychain/.test(err.message)) {
 			err.message = 'Your network doesn\'t have a password';
 		}

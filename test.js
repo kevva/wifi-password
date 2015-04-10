@@ -14,6 +14,6 @@ test(function (t) {
 
 	wifiPassword(function (err, password) {
 		t.assert(!err, err);
-		t.assert(password);
+		t.assert(password, password);
 	});
 });
