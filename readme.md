@@ -1,4 +1,4 @@
-# wifi-password [![Build Status](http://img.shields.io/travis/kevva/wifi-password.svg?style=flat)](https://travis-ci.org/kevva/wifi-password)
+# wifi-password [![Build Status](https://travis-ci.org/kevva/wifi-password.svg?branch=master)](https://travis-ci.org/kevva/wifi-password)
 
 > Get current wifi password
 
