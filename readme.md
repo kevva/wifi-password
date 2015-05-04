@@ -17,7 +17,7 @@ var wifiPassword = require('wifi-password');
 
 wifiPassword(function (err, password) {
 	console.log(password);
-	//=> johndoesecretpassword
+	//=> 'johndoesecretpassword'
 });
 ```
 
