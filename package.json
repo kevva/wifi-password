@@ -7,14 +7,12 @@
   "author": {
     "name": "Kevin Mårtensson",
     "email": "kevinmartensson@gmail.com",
-    "url": "https://github.com/kevva"
+    "url": "github.com/kevva"
   },
   "engines": {
     "node": ">=0.10.0"
   },
-  "bin": {
-    "wifi-password": "cli.js"
-  },
+  "bin": "cli.js",
   "scripts": {
     "test": "node test.js"
   },
@@ -23,6 +21,7 @@
     "index.js"
   ],
   "keywords": [
+    "cli-app",
     "cli",
     "password",
     "wifi"
