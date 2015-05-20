@@ -21,8 +21,10 @@
     "index.js"
   ],
   "keywords": [
-    "cli-app",
+    "app",
     "cli",
+    "cli-app",
+    "network",
     "password",
     "wifi"
   ],
