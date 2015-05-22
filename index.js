@@ -1,76 +1,9 @@
 'use strict';
 
-var execFile = require('child_process').execFile;
-var wifiname = require('wifi-name');
-
-function getPassword(name, cb) {
-	var cmd;
-	var args;
-	var ret;
-
-	if (process.platform === 'darwin') {
-		cmd = 'security';
-		args = ['find-generic-password', '-D', '"AirPort network password"', '-ga', name];
-	} else if (process.platform === 'linux') {
-		cmd = 'sudo';
-		args = ['cat', '/etc/NetworkManager/system-connections/' + name];
-	} else if (process.platform === 'win32') {
-		cmd = 'netsh';
-		args = ['wlan', 'show', 'profile', 'name=' + name, 'key=clear'];
-	}
-
-	execFile(cmd, args, function (err, stdout, stderr) {
-		if (err && /The specified item could not be found in the keychain/.test(err.message)) {
-			err.message = 'Your network doesn\'t have a password';
-		}
-
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		if (stdout && process.platform === 'darwin') {
-			ret = /^\s*password: "(.+)"\s*$/gm.exec(stderr);
-			ret = ret && ret.length ? ret[1] : null;
-		}
-
-		if (stdout && process.platform === 'linux') {
-			ret = /^\s*psk=(.+)\s*$/gm.exec(stdout);
-			ret = ret && ret.length ? ret[1] : null;
-		}
-
-		if (stdout && process.platform === 'win32') {
-			ret = /^\s*Key Content\s*: (.+)\s*$/gm.exec(stdout);
-			ret = ret && ret.length ? ret[1] : null;
-		}
-
-		if (!ret) {
-			cb(new Error('Could not get password'));
-			return;
-		}
-
-		cb(null, ret);
-	});
+if (process.platform === 'darwin') {
+	module.exports = require('osx-wifi-passwrd');
+} else if (process.platform === 'win32') {
+	module.exports = require('win-wifi-password');
+} else {
+	module.exports = require('linux-wifi-password');
 }
-
-module.exports = function (ssid, cb) {
-	if (process.platform !== 'darwin' && process.platform !== 'linux' && process.platform !== 'win32') {
-		throw new Error('Only OS X, Linux and Windows systems are supported');
-	}
-
-	if (ssid && typeof ssid !== 'function') {
-		getPassword(ssid, cb);
-		return;
-	} else if (ssid && !cb) {
-		cb = ssid;
-	}
-
-	wifiname(function (err, name) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		getPassword(name, cb);
-	});
-};

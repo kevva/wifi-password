@@ -29,8 +29,10 @@
     "wifi"
   ],
   "dependencies": {
+    "linux-wifi-password": "^1.0.0",
     "meow": "^3.0.0",
-    "wifi-name": "^1.0.0"
+    "osx-wifi-password": "^1.0.0",
+    "win-wifi-password": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.0.4"
