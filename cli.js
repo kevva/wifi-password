@@ -11,7 +11,7 @@ var cli = meow({
 		'',
 		'  $ wifi-password foo-network',
 		'  foosecretpassword'
-	].join('\n')
+	]
 });
 
 wifiPassword(cli.input[0], function (err, password) {
