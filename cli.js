@@ -1,19 +1,16 @@
 #!/usr/bin/env node
+/* eslint-disable no-mixed-spaces-and-tabs */
 'use strict';
-var meow = require('meow');
-var wifiPassword = require('./');
+const meow = require('meow');
+const wifiPassword = require('./');
 
-var cli = meow({
-	help: [
-		'Usage',
-		'  $ wifi-password',
-		'  johndoesecretpassword',
-		'',
-		'  $ wifi-password foo-network',
-		'  foosecretpassword'
-	]
-});
+const cli = meow(`
+	Usage
+	  $ wifi-password
+	  johndoesecretpassword
 
-wifiPassword(cli.input[0]).then(function (password) {
-	console.log(password);
-});
+	  $ wifi-password foo-network
+	  foosecretpassword
+`);
+
+wifiPassword(cli.input[0]).then(password => console.log(password));

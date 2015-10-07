@@ -1,10 +1,10 @@
 'use strict';
-var pify = require('pify');
-var Promise = require('pinkie-promise');
-var wifiName = require('wifi-name');
+const pify = require('pify');
+const Promise = require('pinkie-promise');
+const wifiName = require('wifi-name');
 
-module.exports = function (ssid) {
-	var fn = require('./lib/linux');
+module.exports = ssid => {
+	let fn = require('./lib/linux');
 
 	if (process.platform === 'darwin') {
 		fn = require('./lib/osx');
