@@ -14,7 +14,7 @@
   },
   "bin": "cli.js",
   "scripts": {
-    "test": "ava"
+    "test": "xo && ava"
   },
   "files": [
     "cli.js",
@@ -36,6 +36,12 @@
     "wifi-name": "^1.0.9"
   },
   "devDependencies": {
-    "ava": "*"
+    "ava": "*",
+    "xo": "*"
+  },
+  "xo": {
+    "ignore": [
+      "test.js"
+    ]
   }
 }
