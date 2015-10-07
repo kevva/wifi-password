@@ -13,9 +13,9 @@ $ npm install --save wifi-password
 ## Usage
 
 ```js
-var wifiPassword = require('wifi-password');
+const wifiPassword = require('wifi-password');
 
-wifiPassword(function (err, password) {
+wifiPassword().then(password => {
 	console.log(password);
 	//=> 'johndoesecretpassword'
 });
@@ -24,19 +24,15 @@ wifiPassword(function (err, password) {
 
 ## API
 
-### wifiPassword([name], cb)
+### wifiPassword([name])
+
+Returns a promise that resolves to a string containing the password.
 
 #### name
 
 Type: `string`
 
 Get the wifi password for a specified *known* network.
-
-#### cb(err, password)
-
-Type: `function`
-
-The callback will return the password to the network.
 
 
 ## CLI

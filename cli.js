@@ -14,11 +14,6 @@ var cli = meow({
 	]
 });
 
-wifiPassword(cli.input[0], function (err, password) {
-	if (err) {
-		console.error(err.message);
-		process.exit(1);
-	}
-
+wifiPassword(cli.input[0]).then(function (password) {
 	console.log(password);
 });

@@ -1,9 +1,22 @@
 'use strict';
+var pify = require('pify');
+var Promise = require('pinkie-promise');
+var wifiName = require('wifi-name');
 
-if (process.platform === 'darwin') {
-	module.exports = require('osx-wifi-password');
-} else if (process.platform === 'win32') {
-	module.exports = require('win-wifi-password');
-} else {
-	module.exports = require('linux-wifi-password');
-}
+module.exports = function (ssid) {
+	var fn = require('./lib/linux');
+
+	if (process.platform === 'darwin') {
+		fn = require('./lib/osx');
+	}
+
+	if (process.platform === 'win32') {
+		fn = require('./lib/win');
+	}
+
+	if (ssid) {
+		return fn(ssid);
+	}
+
+	return pify(wifiName, Promise)().then(fn);
+};
