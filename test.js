@@ -1,11 +1,9 @@
-'use strict';
-var test = require('ava');
-var wifiPassword = require('./');
+import test from 'ava';
+import fn from './';
 
-test(function (t) {
+test(async t => {
 	t.plan(1);
 
-	wifiPassword().then(function (password) {
-		t.assert(password, password);
-	});
+	const password = await fn();
+	t.ok(password);
 });
