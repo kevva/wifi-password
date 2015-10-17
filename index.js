@@ -1,6 +1,5 @@
 'use strict';
 const pify = require('pify');
-const Promise = require('pinkie-promise');
 const wifiName = require('wifi-name');
 
 module.exports = ssid => {
@@ -18,5 +17,5 @@ module.exports = ssid => {
 		return fn(ssid);
 	}
 
-	return pify(wifiName, Promise)().then(fn);
+	return pify(wifiName)().then(fn);
 };
