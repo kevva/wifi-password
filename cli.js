@@ -12,4 +12,13 @@ const cli = meow(`
 	  foosecretpassword
 `);
 
-wifiPassword(cli.input[0]).then(password => console.log(password));
+wifiPassword(cli.input[0])
+	.then(password => console.log(password))
+	.catch(err => {
+		if (err.message.indexOf(`Your network doesn't have a password`)) {
+			console.error(err.message);
+			process.exit(1);
+		}
+
+		throw err;
+	});
