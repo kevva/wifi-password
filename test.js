@@ -1,7 +1,6 @@
 import test from 'ava';
-import fn from './';
+import m from './';
 
 test(async t => {
-	t.plan(1);
-	t.ok(await fn());
+	t.truthy(await m());
 });
