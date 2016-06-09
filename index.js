@@ -1,5 +1,4 @@
 'use strict';
-const pify = require('pify');
 const wifiName = require('wifi-name');
 
 module.exports = ssid => {
@@ -17,5 +16,5 @@ module.exports = ssid => {
 		return fn(ssid);
 	}
 
-	return pify(wifiName)().then(fn);
+	return wifiName().then(fn);
 };
