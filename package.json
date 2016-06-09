@@ -30,6 +30,7 @@
     "wifi"
   ],
   "dependencies": {
+    "execa": "^0.4.0",
     "meow": "^3.3.0",
     "pify": "^2.2.0",
     "wifi-name": "^1.0.9"
