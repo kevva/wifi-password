@@ -35,22 +35,9 @@ Type: `string`
 Get the wifi password for a specified *known* network.
 
 
-## CLI
+## Related
 
-```
-$ npm install --global wifi-password
-```
-
-```
-$ wifi-password --help
-
-  Usage
-    $ wifi-password
-    johndoesecretpassword
-
-    $ wifi-password foo-network
-    foosecretpassword
-```
+* [wifi-password-cli](https://github.com/kevva/wifi-password-cli) - CLI for this module.
 
 
 ## License

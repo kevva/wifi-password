@@ -12,26 +12,20 @@
   "engines": {
     "node": ">=4"
   },
-  "bin": "cli.js",
   "scripts": {
     "test": "xo && ava"
   },
   "files": [
-    "cli.js",
     "index.js",
     "lib"
   ],
   "keywords": [
-    "app",
-    "cli",
-    "cli-app",
     "network",
     "password",
     "wifi"
   ],
   "dependencies": {
     "execa": "^0.4.0",
-    "meow": "^3.3.0",
     "wifi-name": "^2.0.0"
   },
   "devDependencies": {
