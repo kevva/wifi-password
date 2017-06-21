@@ -6,7 +6,7 @@
 ## Install
 
 ```
-$ npm install --save wifi-password
+$ npm install wifi-password
 ```
 
 
