@@ -29,7 +29,7 @@
     "wifi-name": "^3.0.0"
   },
   "devDependencies": {
-    "ava": "*",
-    "xo": "*"
+    "ava": "^0.25.0",
+    "xo": "0.17.1"
   }
 }
